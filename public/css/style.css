@@ -35,8 +35,9 @@ body {
     font-weight: 700;
 }
 
-.-error-img {
+.error-img {
     width: 100%;
+    height: 100%;
 }
 
 .navbar a {
