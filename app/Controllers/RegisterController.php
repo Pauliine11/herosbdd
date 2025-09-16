@@ -24,7 +24,6 @@ function checkFormat($nameInput, $value){
     $regexPseudo = '/^([0-9a-z_\-.A-Zà-üÀ-Ü]){3,255}$/';
     $regexPassword = '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/';
 
-
     //on prend le nom de l'input
     switch($nameInput){
 
@@ -40,23 +39,19 @@ function checkFormat($nameInput, $value){
 
         case 'password':
 
-            //si la valeur de l'input n'arrive pas a passer le filtre alors
             if(!preg_match($regexPassword, $value)){
-                //on appel notre tableau et on ajoute en clé pseudo et en valeur la string
-                $arrayError['password'] = 'Merci de renseigner un mot de passe avec au minimum 8 caractères, une MAJ, un chiffre et un caractère spécial';
+                 $arrayError['password'] = 'Merci de donné un mot de passe avec au minimum : 8 caractères, 1 majuscule, 1 miniscule, 1 caractère spécial!';
             }
             break;
 
-            //pour le mail => FILTER_VALIDATE_EMAIL
         case 'email':
 
-            if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            $arrayError['email'] = 'Merci de renseigner un email correcte !';
+            if(!filter_var($value, FILTER_VALIDATE_EMAIL)){
+                $arrayError['mail'] = 'Merci de renseigner un e-mail correcte!';
             }
             break;
     }
-}        
-
+}
 
 
 if(isset($_POST['pseudo'])){
@@ -72,15 +67,33 @@ if(isset($_POST['pseudo'])){
     isNotEmpty('pseudo');
     isNotEmpty('email');
     isNotEmpty('password');
-
-    // Nos erreurs sont dans :
+    
+    //nos erreurs sont dans :
     var_dump($arrayError);
     
+    //Si mon tableau d'erreur est vide alor :
+    if(empty($arrayError)){
+
+        // 0- Je creer la requête SQL:
+        $query = "INSERT INTO `user` (`pseudo`, `password`, `email`) 
+        VALUES (:pseudo, :password, :email)";
+
+        // 1- prépare la requête :
+        $queryStatement = $pdo->prepare($query);
+
+        // 2- lier les marqueurs aux valeurs :
+        $queryStatement->bindValue(':pseudo', $valuePseudo);
+        $queryStatement->bindValue(':password', $valuePassword);
+        $queryStatement->bindValue(':email', $valueEmail);
+
+        // 3- exécuter la requête :
+        $queryStatement->execute();
+
+    }
 
     require_once( __DIR__ . "/../Views/register.view.php" );
 }else{
 
     require_once( __DIR__ . "/../Views/register.view.php" );
 }
-
     
