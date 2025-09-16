@@ -7,21 +7,9 @@
     box-sizing: border-box;
 }
 
-:root {
-    --text-color: #fff;
-    --color: #5dbad6;
-    --bg-color: #2d2d2e;
-    --first: #fff;
-    --second: #000;
-    --mob-color: #363636;
-    --box-bg: #333;
-    --clr-bg: #3e3e3e;
-    --place-clr: #afafaf;
-}
-
 body {
     /*position: relative;*/
-    background-image: url(/public/img/space2.jpg);
+    background-color: #493f3f;
     background-size: cover;
     background-position: center;
     color: white;
@@ -65,11 +53,10 @@ body {
 }
 
 .footer {
-    bottom: 0; left: 0; right: 0;
-    padding: 1.3rem 10%;
-    background: rgba(0, 0, 0, .1);
+    position: absolute;
+    background: rgba(18, 70, 138, 0.507);
     backdrop-filter: blur(50px);
-    color: #493f3f;   
+    color: #faf7f7;   
 }
 
 .footer p {
@@ -87,83 +74,4 @@ h1 {
 
 .firstTitle {
     margin: 35px 0 0 25px;
-}
-
-p {
-    text-align: center;
-}
-
-.contact form {
-    max-width: 40em;
-    margin: 1em auto;
-    text-align: center;
-    margin-bottom: 3em;
-}
-
-.contact form .form-group {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.contact form .form-group input {
-    width: 49%;
-    padding: 1em;
-    font-size: 16px;
-    color: var(--first);
-    background: var(--clr-bg);
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    margin: 8px 0;
-}
-
-.contact form .form-group input::-moz-placeholder {
-    color: var(--place-clr);
-}
-
-.contact form .form-group input::placeholder {
-    color: var(--place-clr);
-}
-
-.contact form textarea {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    color: var(--first);
-    background: var(--clr-bg);
-    border: none;
-    outline: none;
-    resize: none;
-    border-radius: 8px;
-    margin: 8px 0;
-}
-
-.contact form textarea::-moz-placeholder {
-    color: var(--place-clr);
-}
-
-.contact form textarea::placeholder {
-    color: var(--place-clr);
-}
-
-.contact form button {
-    font-size: 15px;
-    font-weight: 600;
-    padding: 12px 24px;
-    margin-top: 1em;
-    border-radius: 25px;
-    color: #fff;
-    background: var(--color);
-    border: 2px solid var(--color);
-    outline: none;
-    cursor: pointer;
-    transition: 0.3s ease-in;
-}
-
-.contact form button:hover {
-    color: var(--color);
-    background: transparent;
-    transform: translateY(-7px);
-    box-shadow: 0 0 0.7rem var(--color);
 }
