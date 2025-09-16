@@ -9,7 +9,7 @@
 
 body {
     /*position: relative;*/
-    background-color: #493f3f;
+    background-color: #7a6e6e;
     background-size: cover;
     background-position: center;
     color: white;
@@ -54,6 +54,8 @@ body {
 
 .footer {
     position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.3rem 10%;
     background: rgba(18, 70, 138, 0.507);
     backdrop-filter: blur(50px);
     color: #faf7f7;   

@@ -37,7 +37,7 @@ require_once(__DIR__ . '/partials/head.php');
 
             <div class="form-group">
                 <label for="password" class="form-label mt-3">Mot de passe:</label>
-                <input type="password" class="form-control"  id="password" name="password" minlength="8" placeholder="Entrez le mot de passe">
+                <input type="password" class="form-control"  id="password" name="password"  placeholder="Entrez le mot de passe">
                 <?php
                     if(isset($arrayError['password'])){
                       ?>
