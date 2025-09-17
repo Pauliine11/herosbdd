@@ -9,7 +9,7 @@
 
 body {
     /*position: relative;*/
-    background-color: #7a6e6e;
+    background-color: #ad9f9f;
     background-size: cover;
     background-position: center;
     color: white;
@@ -20,7 +20,7 @@ body {
     left: 0;
     width: 100%;
     padding: 1.3rem 10%;
-    background: rgba(18, 70, 138, 0.507);
+    background: rgba(55, 104, 167, 0.507);
     backdrop-filter: blur(50px);
     display: flex;
     justify-content: space-between;
@@ -71,7 +71,7 @@ h1, h2 {
 }
 
 h1 {
-    color: rgba(70, 172, 194, 0.8);
+    color: rgba(248, 254, 255, 0.8);
 }
 
 .firstTitle {
