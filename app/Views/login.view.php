@@ -1,40 +1,34 @@
 <?php 
 require_once(__DIR__ . '/partials/head.php');
 ?>
-
 <h1 class="mt-5">Connexion</h1>
-
-<section id="contact" class="contact">
-    <form method="POST">
-        <div class="container mt-5 formularStyle">
-
-            <div class="form-group">
-                <label for="pseudo" class="form-label" >Pseudo</label>
-                <input type="text" class="form-control" name="pseudo" placeholder="Pseudo">
-                <?php
-                    if(isset($arrayError['pseudo'])){
-                      ?>
-                      <p class="text-danger"><?= $arrayError['pseudo']?></p>
-                      <?php  
-                    }
-                ?>
-            </div>
-            <div class="form-group">
-                <label for="password" class="form-label mt-3">Mot de passe:</label>
-                <input type="password" class="form-control"  id="password" name="password"  placeholder="Entrez le mot de passe">
-                <?php
-                    if(isset($arrayError['password'])){
-                      ?>
-                      <p class="text-danger"><?= $arrayError['password']?></p>
-                      <?php  
-                    }
-                ?>
-            </div>
-
-            <button type="submit" class="colorBtn btn mt-3">Se connecter</button>
+<form method="POST">
+    <div class="container formularStyle mt-5">
+        <div class="form-group">
+            <label for="email" class="form-label">Donne moi ton email :</label>
+            <input type="email" name="email" id="email" placeholder="Toto@gmail.com" class="form-control">
+            <?php 
+                if(isset($arrayError['email'])){
+                    ?>
+                        <p class="text-danger"><?= $arrayError['email']?></p>
+                    <?php
+                }
+            ?>
         </div>
-    </form>
-</section>
+        <div class="form-group">
+            <label for="password" class="form-label">Donne moi ton mot de pase :</label>
+            <input type="password" name="password" id="password" class="form-control">
+            <?php 
+                if(isset($arrayError['password'])){
+                    ?>
+                        <p class="text-danger"><?= $arrayError['password']?></p>
+                    <?php
+                }
+            ?>
+        </div>
+        <button type="submit" class=" colorBtn btn mt-5">Connexion</button>
+    </div>
+</form>
 
 <?php 
 require_once(__DIR__ . '/partials/footer.php');
