@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/partials/head.php');
 ?>
 
-<h1 class="mt-5">Formulaire d'inscription</h1>
+<h1 class="mt-5">Connexion</h1>
 
 <section id="contact" class="contact">
     <form method="POST">
@@ -19,19 +19,6 @@ require_once(__DIR__ . '/partials/head.php');
                     }
                 ?>
             </div>
-
-            <div class="form-group">
-                <label for="email" class="form-label mt-3">Adresse e-mail</label>
-                <input type="email" class="form-control" name="email" placeholder="Email">
-                <?php
-                    if(isset($arrayError['email'])){
-                      ?>
-                      <p class="text-danger"><?= $arrayError['email']?></p>
-                      <?php  
-                    }
-                ?>
-            </div>
-
             <div class="form-group">
                 <label for="password" class="form-label mt-3">Mot de passe:</label>
                 <input type="password" class="form-control"  id="password" name="password"  placeholder="Entrez le mot de passe">
@@ -44,7 +31,7 @@ require_once(__DIR__ . '/partials/head.php');
                 ?>
             </div>
 
-            <button type="submit" class="colorBtn btn mt-3">S'inscrire</button>
+            <button type="submit" class="colorBtn btn mt-3">Se connecter</button>
         </div>
     </form>
 </section>

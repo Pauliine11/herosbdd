@@ -1,50 +1,67 @@
 <?php
-require_once(__DIR__ . '/../Utils/checkForm.php');
+    require_once(__DIR__ . '/../Utils/checkForm.php');
 
-if(isset($_POST['pseudo'])){
+    if(isset($_POST['pseudo'])){
 
-    $valueEmail = htmlspecialchars($_POST['email']);
-    $valuePassword = htmlspecialchars($_POST['password']);
-    $valuePseudo = htmlspecialchars($_POST['pseudo']);
+        $valueEmail = htmlspecialchars($_POST['email']);
+        $valuePassword = htmlspecialchars($_POST['password']);
+        $valuePseudo = htmlspecialchars($_POST['pseudo']);
 
-    checkFormat('pseudo', $valuePseudo);
-    checkFormat('password', $valuePassword);
-    checkFormat('email', $valueEmail);
+        checkFormat('pseudo', $valuePseudo);
+        checkFormat('password', $valuePassword);
+        checkFormat('email', $valueEmail);
 
-    isNotEmpty('pseudo');
-    isNotEmpty('email');
-    isNotEmpty('password');
-    
-    //nos erreurs sont dans :
-    var_dump($arrayError);
-    
-    //Si mon tableau d'erreur est vide alor :
-    if(empty($arrayError)){
+        isNotEmpty('pseudo');
+        isNotEmpty('email');
+        isNotEmpty('password');
+        
+        //nos erreurs sont dans :
+        //var_dump($arrayError);
+        
+        //Si mon tableau d'erreur est vide alor :
+        if(empty($arrayError)){
+            
+            //Vérifie si l'utilisateur ( si l'email ) existe
+            // On prépare la requête
+            $queryMail = "SELECT * FROM `user` WHERE email = :email";
+            // Je prépare ma requête
+            $mailStatement = $pdo->prepare($queryMail);
+            // Je modifie la valeur du mail
+            $mailStatement->bindParam(':email', $valueEmail);
+            // On exécute la requete avec le parm'mail
+            $mailStatement->execute();
+            // Dans la variable userMail je mets la réponse de ma requete 
+            $userMail = $mailStatement->fetch();
+            //var_dump($userMail);
 
-        //Hash le mot de passe 
 
-        $hashPassword = password_hash($valuePassword, PASSWORD_DEFAULT);
+            // si mon userMail existe dans la base de donnée alors :
+            if($userMail){
+                errorMessage("Cette adresse email existe déjà.");
+            }else{
+                // Sinon, on :
+                //Hash le mot de passe 
+                $hashPassword = password_hash($valuePassword, PASSWORD_DEFAULT);
 
-        // 0- Je creer la requête SQL:
-        $query = "INSERT INTO `user` (`pseudo`, `password`, `email`) 
-        VALUES (:pseudo, :password, :email)";
+                // 0- Je creer la requête SQL:
+                $query = "INSERT INTO `user` (`pseudo`, `password`, `email`) 
+                VALUES (:pseudo, :password, :email)";
+                // 1- prépare la requête :
+                $queryStatement = $pdo->prepare($query);
+                // 2- lier les marqueurs aux valeurs :
+                $queryStatement->bindValue(':pseudo', $valuePseudo);
+                $queryStatement->bindValue(':password', $hashPassword);
+                $queryStatement->bindValue(':email', $valueEmail);
+                // 3- exécuter la requête :
+                $queryStatement->execute();
 
-        // 1- prépare la requête :
-        $queryStatement = $pdo->prepare($query);
+                redirectToRoute('/');
+            }
+        }
 
-        // 2- lier les marqueurs aux valeurs :
-        $queryStatement->bindValue(':pseudo', $valuePseudo);
-        $queryStatement->bindValue(':password', $hashPassword);
-        $queryStatement->bindValue(':email', $valueEmail);
+        require_once( __DIR__ . "/../Views/register.view.php" );
+    }else{
 
-        // 3- exécuter la requête :
-        $queryStatement->execute();
-
+        require_once( __DIR__ . "/../Views/register.view.php" );
     }
-
-    require_once( __DIR__ . "/../Views/register.view.php" );
-}else{
-
-    require_once( __DIR__ . "/../Views/register.view.php" );
-}
-    
+        
