@@ -13,14 +13,11 @@ body {
 }
 
 .header {
-    position: relative;
-    width: 100%;
     padding: 1.3rem 10%;
     background: rgba(55, 104, 167, 0.507);
     backdrop-filter: blur(50px);
     display: flex;
     justify-content: space-between;
-    z-index: 100;
 }
 
 .logo {
@@ -44,8 +41,8 @@ body {
     margin-left: 2.5rem;
 }
 
-.footer {
-    position: absolute;
+footer {
+    position: fixed;
     bottom: 0; left: 0; right: 0;
     padding: 1.3rem 10%;
     background: rgba(18, 70, 138, 0.507);
@@ -53,7 +50,7 @@ body {
     color: #faf7f7;   
 }
 
-.footer p {
+footer p {
     display: flex;
     justify-content: center;    
 }
@@ -80,4 +77,8 @@ h1 {
 
 .colorBtn {
     background-color: rgb(233, 183, 21);
+}
+
+.widthHero {
+    width: 75%;
 }
