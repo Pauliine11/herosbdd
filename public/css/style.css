@@ -8,16 +8,12 @@
 }
 
 body {
-    /*position: relative;*/
     background-color: #ad9f9f;
-    background-size: cover;
-    background-position: center;
     color: white;
 }
 
 .header {
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     padding: 1.3rem 10%;
     background: rgba(55, 104, 167, 0.507);
@@ -48,11 +44,9 @@ body {
     margin-left: 2.5rem;
 }
 
-#check {
-    display: none;
-}
-
 .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
     padding: 1.3rem 10%;
     background: rgba(18, 70, 138, 0.507);
     backdrop-filter: blur(50px);
