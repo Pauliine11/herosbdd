@@ -55,7 +55,7 @@
                 // 3- exécuter la requête :
                 $queryStatement->execute();
 
-                redirectToRoute('/');
+                redirectToRoute('/', 201);
             }
         }
 
