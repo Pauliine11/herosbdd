@@ -10,9 +10,24 @@
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo">Heros BDD</a>
+        <a href="#" class="logo">Heros' Project</a>
         <nav class="navbar">
-            <a href="/register" style="--i:0;">S'inscrire</a>
-            <a href="/login" style="--i:1;">Se connecter</a>
+            <?php
+                if(isset($_SESSION['user'])){
+                    if($_SESSION['user']['role'] === "admin"){
+              ?>                
+                  <a href="/addheros">Ajouter un hero</a>                
+              <?php
+            }
+            ?>
+                <a href="/logout" style="--i:1;">Se déconnecter</a>
+            <?php
+                } else {
+            ?>
+                <a href="/register" style="--i:0;">S'inscrire</a>
+                <a href="/login" style="--i:1;">Se connecter</a>
+            <?php
+                }
+            ?>
         </nav>
     </header>
