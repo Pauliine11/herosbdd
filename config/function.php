@@ -26,3 +26,9 @@
         <?php
 
     }
+
+    function debug($info){
+        echo "<pre>";
+        //var_dump($info);
+        echo "</pre>";
+    }
