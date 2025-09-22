@@ -31,4 +31,3 @@
             ?>
         </nav>
     </header>
-    <main>
