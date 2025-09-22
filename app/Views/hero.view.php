@@ -15,9 +15,16 @@ require_once(__DIR__ . '/partials/head.php');
                 <h2 class="mt-5">Description :</h2>
                 <p class="mt-5"><?= $hero['description'] ?></p>
             </div>
+
+            <?php 
+                if((isset($_SESSION['user'])) && ($_SESSION['user']['role'] === 'admin')){
+            ?>
             <div class="col">
-                <button type="submit" class="btn mt-5 colorBtn">Modifier</button>
+                <a href="/edithero?id=<?= $hero['id'] ?>" class="btn mt-5 colorBtn">Modifier</a>
             </div>
+            <?php
+                }
+            ?>
         </div>
     </div>
 <?php 

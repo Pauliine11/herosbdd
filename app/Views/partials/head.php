@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo">Heros' Project</a>
+        <a href="/" class="logo">Heros' Project</a>
         <nav class="navbar">
             <?php
                 if(isset($_SESSION['user'])){
