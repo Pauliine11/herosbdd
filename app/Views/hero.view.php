@@ -21,6 +21,7 @@ require_once(__DIR__ . '/partials/head.php');
             ?>
             <div class="col">
                 <a href="/edithero?id=<?= $hero['id'] ?>" class="btn mt-5 colorBtn">Modifier</a>
+                <a href="/deletehero?id=<?= $hero['id'] ?>" class="btn btn-danger mt-5">Supprimer</a>
             </div>
             <?php
                 }

@@ -1,28 +1,28 @@
 <?php 
 require_once(__DIR__ . '/partials/head.php');
 ?>
-
-<h1>Bienvenue ! </h1>
-
-<?php
-    if($heros){
-        foreach($heros as $value){
-            ?>
-                <div class="container">
-                    <div class="row">
-                        <div style="width: 22rem;">
-                            <img class="card-img-top rounded mt-5" src="public/img/<?= $value['image'] ?>" alt="Image de <?php echo $value['name'] ?>">
-                            <h2><?= $value['name']?></h2>
-                            <a href="/hero?id=<?= $value['id']?>" class="colorBtn btn d-flex justify-content-center">Voir +</a>
-                        </div>
-                    </div>
-                </div>
+ <h1>Les meilleurs des héros</h1>
+    <div class="container-fluid my-5">
+        <div class="row justify-content-around">
             <?php
-        }
-    }else{
-        echo "<p>Aucun heros disponible, ils sont tous en mission.</p>";
-    } 
-?>
+            if($heros){
+                foreach($heros as $value){
+
+                    ?>
+                        <div style="width: 22rem;">
+                            <img class="card-img-top" src="public/img/<?= $value['image'] ?>" alt="Image de <?php echo $value['name'] ?>">
+                            <h2 class="mt-2"><?= $value['name']?></h2>
+                            <a href="/hero?id=<?= $value['id']?>" class="btn colorBtn d-flex justify-content-center mt-4">Voir +</a>
+                        </div>
+                    <?php
+                }
+            }else{
+                echo "<p>Aucun personnage disponible, ils sont tous en mission.</p>";
+            }   
+            ?>
+        </div>
+        
+    </div>
 
 <?php 
 require_once(__DIR__ . '/partials/footer.php');

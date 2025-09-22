@@ -15,7 +15,8 @@ $routes = [
     '/logout' => 'LogoutController.php',
     '/addheros' => 'AddHerosController.php',
     '/hero' => 'HeroController.php',
-    '/edithero' => 'EditHeroController.php'
+    '/edithero' => 'EditHeroController.php',
+    '/deletehero' => 'DeleteHeroController.php'
     
 ];
 
